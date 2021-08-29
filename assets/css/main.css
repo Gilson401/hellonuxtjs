@@ -1,0 +1,37 @@
+.norte{    display: flex;    justify-content:center;      align-items:flex-start;  }
+.nordeste{ display: flex;    justify-content:flex-end;    align-items:flex-start;  }
+.leste{    display: flex;    justify-content:flex-end;    align-items:center;    }
+.sudeste{  display: flex;    justify-content: flex-end;   align-items:flex-end ;  }
+.sul{      display: flex;    justify-content: center;     align-items:flex-end ;  }
+.tw-sul{ @apply justify-center; @apply items-end;}
+.sudoeste{ display: flex;    justify-content: flex-start; align-items:flex-end ;  }
+.oeste{    display: flex;    justify-content:flex-start;  align-items:center;  }
+.noroeste{ display: flex;    justify-content:flex-start;  align-items:flex-start;  }
+.centro{   display: flex;    justify-content:center;      align-items:center;  }
+.tw-centro {@apply flex justify-center items-center;}
+.espaco-igual-envolto{  display: flex;   justify-content: space-around;   }
+.espaco-maximo-entre{  display: flex;   justify-content: space-between;   }
+.bordme-red{border: 1px solid red;}
+.bordme-white{border: 1px solid white;}
+.bordme-blue{border: 1px solid blue;}
+.button-yellow{
+    @apply bg-transparent hover:bg-yellow-300 ;
+    @apply text-yellow-300 hover:text-black;
+    @apply rounded shadow hover:shadow-lg ;
+    @apply py-2 px-4 border border-yellow-300 hover:border-transparent;
+    @apply transition-all;
+}
+.button-black{
+    @apply bg-transparent hover:bg-gray-900 ;
+    @apply hover:text-white;
+    @apply rounded shadow hover:shadow-lg ;
+    @apply py-2 text-center border border-gray-900 hover:border-transparent;
+    @apply w-16;
+    @apply transition-all;
+}
+button{
+    @apply transition-all;
+}
+a{
+    @apply text-blue-800;
+}
