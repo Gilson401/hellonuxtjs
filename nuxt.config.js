@@ -1,9 +1,7 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-  router: {
-    base: '/hellonuxtjs/'
-  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'hellonuxtjs',
@@ -18,6 +16,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { src: 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css' }
     ]
   },
 

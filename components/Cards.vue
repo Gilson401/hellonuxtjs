@@ -12,7 +12,6 @@
                 Voltar
               </NuxtLink>
             </div>
-
             <h1
               class="
               text-gray-900
@@ -67,7 +66,7 @@
         </div>
         <div v-show="!isLoading" class="flex flex-row flex-wrap">
           <div
-            v-for="(item, index) in nasaListItems"
+            v-for="(item, index) in dataLoaded"
             :key="index"
             class="sm:w-1/3"
           >
@@ -80,9 +79,13 @@
 </template>
 
 <script>
+// import axios from 'axios'
 import Card from './Card.vue'
+
 export default {
   name: 'Cards',
+  
+  fetchOnServer: false,
   components: {
     Card
   },
@@ -91,7 +94,28 @@ export default {
       startDate: '',
       endDate: '',
       errorMessage: '',
-      dataLoaded: []
+      dataLoaded: [],
+      isStripeLoaded: false
+    }
+  },
+  async fetch () {
+    const init = this.startDate
+    const end = this.endDate
+
+    if (!init || !end) {
+      return
+    }
+
+    const key = ['DEMO_KEY', 'xbEqj2OOfMoxud9Gaelc2yKpFL123bBVPxBmTrJv']
+    const fetcheString = `https://api.nasa.gov/planetary/apod?api_key=${key[1]}&start_date=${init}&end_date=${end}`
+   
+    this.dataLoaded = await fetch(fetcheString).then(res =>
+      res.json()
+    )
+  },
+  head () {
+    return {
+      title: 'Nasa - Foto do dia.'
     }
   },
   computed: {
@@ -103,13 +127,44 @@ export default {
     }
   },
   methods: {
+    async refetch () {
+      const init = this.startDate
+      const end = this.endDate
+     
+      if (!init || !end || this.errMessage() !== '') {
+        return
+      }
+      const key = ['DEMO_KEY', 'xbEqj2OOfMoxud9Gaelc2yKpFL123bBVPxBmTrJv']
+      const fetcheString = `https://api.nasa.gov/planetary/apod?api_key=${key[1]}&start_date=${init}&end_date=${end}`
+      this.$store.commit('nasa/SET_LOADING_STATE', true)
+      const load = await fetch(fetcheString).then(res =>
+        res.json()
+      )
+      this.dataLoaded = load.filter(item => item.media_type === 'image')
+      this.$store.commit('nasa/SET_LOADING_STATE', false)
+    },
     setDateStart (e) {
-      this.$store.commit('nasa/SET_START_DATE', e.target.value)
-      this.doNasaSearch()
+      this.refetch()
     },
     setDateEnd (e) {
-      this.$store.commit('nasa/SET_END_DATE', e.target.value)
-      this.doNasaSearch()
+      this.refetch()
+    },
+    errMessage () {
+      const today = new Date()
+      const start = new Date(this.startDate)
+      const end = new Date(this.endDate)
+      let errorMessage = ''
+      if (end < start) {
+        errorMessage = 'Data início deve ser anterior ou igual à data fim'
+      }
+      if (today < start) {
+        errorMessage = 'Data início não deve ser no futuro'
+      }
+      if (today < end) {
+        errorMessage = 'Data fim não deve ser no futuro'
+      }
+      this.errorMessage = errorMessage
+      return errorMessage
     },
     async doNasaSearch () {
       const today = new Date()
@@ -131,7 +186,7 @@ export default {
 
       this.errorMessage = ''
       if (this.startDate && this.endDate) {
-        this.$store.commit('nasa/ADD_NASA_LIST_ITEMS', [])
+        this.$store.commit('nasa/SET_NASA_LIST_ITEMS', [])
         this.$store.commit('nasa/SET_LOADING_STATE', true)
         await this.$store.dispatch('nasa/getNasaItems')
         this.$store.commit('nasa/SET_LOADING_STATE', false)

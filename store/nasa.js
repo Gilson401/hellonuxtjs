@@ -9,7 +9,7 @@ export const state = () => ({
   
 export const mutations = {
 
-  ADD_NASA_LIST_ITEMS (state, item) {
+  SET_NASA_LIST_ITEMS (state, item) {
     state.nasaListItems = item
   },
 
@@ -22,7 +22,11 @@ export const mutations = {
   },
   SET_LOADING_STATE (state, value) {
     state.isLoading = value
+  },
+  ADD_NASA_LIST_ITEMS (state, item) {
+    state.nasaListItems.push(item)
   }
+
 }
 
 export const actions = {
@@ -38,7 +42,7 @@ export const actions = {
     const key = ['DEMO_KEY', 'xbEqj2OOfMoxud9Gaelc2yKpFL123bBVPxBmTrJv']
     data = await this.$axios.$get(`https://api.nasa.gov/planetary/apod?api_key=${key[1]}&start_date=${init}&end_date=${end}`)
    
-    commit('ADD_NASA_LIST_ITEMS', data.filter(item => item.media_type === 'image'))
+    commit('SET_NASA_LIST_ITEMS', data.filter(item => item.media_type === 'image'))
   }
 }
 
