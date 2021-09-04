@@ -8,9 +8,9 @@
             <div
               class="button-black mb-2"
             >
-              <!-- <NuxtLink to="/">
+              <NuxtLink to="/">
                 Voltar
-              </NuxtLink> -->
+              </NuxtLink>
             </div>
             <h1
               class="

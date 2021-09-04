@@ -1,6 +1,6 @@
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable no-console */
-import { mount, createLocalVue } from '@vue/test-utils'
+import { mount, createLocalVue, RouterLinkStub } from '@vue/test-utils'
 import Vuex from 'vuex'
 import Cards from '../components/Cards.vue'
 
@@ -14,6 +14,10 @@ describe('Actions.vue', () => {
   let store
   let getters
   
+  const stubs = {
+    NuxtLink: RouterLinkStub
+  }
+
   beforeEach(() => {
     state = {
       nasa: {
@@ -40,8 +44,8 @@ describe('Actions.vue', () => {
     })
   })
 
-  it('It displays Data início não deve ser no futuro', async () => {
-    const wrapper = mount(Cards, { store, localVue })
+  it('It displays: Data início não deve ser no futuro', async () => {
+    const wrapper = mount(Cards, { store, localVue, stubs })
 
     const startDate = wrapper.find('#startDate')
     const endDate = wrapper.find('#endDate')
@@ -55,8 +59,8 @@ describe('Actions.vue', () => {
     expect(wrapper.find('#errmsg').text()).toBe('Data início não deve ser no futuro')
   })
 
-  it('It displays Data fim não deve ser no futuro', async () => {
-    const wrapper = mount(Cards, { store, localVue })
+  it('It displays: Data fim não deve ser no futuro', async () => {
+    const wrapper = mount(Cards, { store, localVue, stubs })
 
     const startDate = wrapper.find('#startDate')
     const endDate = wrapper.find('#endDate')
@@ -70,8 +74,8 @@ describe('Actions.vue', () => {
     expect(wrapper.find('#errmsg').text()).toBe('Data fim não deve ser no futuro')
   })
 
-  it('It displays Data início deve ser anterior ou igual à data fim', async () => {
-    const wrapper = mount(Cards, { store, localVue })
+  it('It displays: Data início deve ser anterior ou igual à data fim', async () => {
+    const wrapper = mount(Cards, { store, localVue, stubs })
 
     const startDate = wrapper.find('#startDate')
     const endDate = wrapper.find('#endDate')
