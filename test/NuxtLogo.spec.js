@@ -1,6 +1,7 @@
 import { mount, RouterLinkStub } from '@vue/test-utils'
 import NuxtLogo from '@/components/NuxtLogo.vue'
 import Card from '@/components/Card.vue'
+
 const nasaItem = {
   nasaDataitem: {
     copyright: 'Robert Fedez',
@@ -14,7 +15,7 @@ const nasaItem = {
   }
 }
 
-describe('NuxtLogo', () => {
+describe('NuxtLogo Component', () => {
   test('is a Vue instance', () => {
     const wrapper = mount(NuxtLogo,
       {
@@ -25,20 +26,21 @@ describe('NuxtLogo', () => {
     expect(wrapper.vm).toBeTruthy()
   })
 })
-describe('Cards props().copyright', () => {
-  it('renders a Card', () => {
+
+describe('Card Component', () => {
+  it('copyright should be Robert Fedez', () => {
     const wrapper = mount(Card, {
-      propsData: {
-        nasaDataitem: nasaItem
-      }
+      propsData: nasaItem
+      
     })
     expect(wrapper.props().nasaDataitem.copyright).toBe('Robert Fedez')
   })
 
-  it('Checks date', () => {
+  it('Checks date props', () => {
     const wrapper = mount(Card, {
       propsData: nasaItem
     })
     expect(wrapper.props().nasaDataitem.date).toBe('2021-08-31')
   })
 })
+

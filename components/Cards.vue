@@ -8,9 +8,9 @@
             <div
               class="button-black mb-2"
             >
-              <NuxtLink to="/">
+              <!-- <NuxtLink to="/">
                 Voltar
-              </NuxtLink>
+              </NuxtLink> -->
             </div>
             <h1
               class="
@@ -41,18 +41,20 @@
                 Selecione o período da pesquisa:
               </p>
               <input
+                id="startDate"
                 v-model="startDate"
                 class="input text-right"
                 type="date"
                 @change="setDateStart"
               >
               <input
+                id="endDate"
                 v-model="endDate"
                 class="input text-right"
                 type="date"
                 @change="setDateEnd"
               >
-              <span class="text-red-700">{{ errorMessage }}</span>
+              <span id="errmsg" class="text-red-700"> {{ errorMessage }}</span>
             </div>
           </div>
         </div>
