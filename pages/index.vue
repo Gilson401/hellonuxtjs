@@ -32,7 +32,7 @@
         </ul>
 
         <div
-          class="transition-all bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-black rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent"
+          class="button-yellow"
         >
           <NuxtLink to="/nasa">
             Nasa Apod API
@@ -40,7 +40,7 @@
         </div>
 
         <div
-          class="transition-all bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-black rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent"
+          class="button-yellow"
         >
           <NuxtLink to="/modalexib">
             Modal e Emit

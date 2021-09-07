@@ -42,7 +42,7 @@ export default {
   },
   data () {
     return {
-      showModal: false,
+      showModal: true,
       fatherData: '',
       modalConfig: {
         title: 'Modal Invocado pelo Pai',

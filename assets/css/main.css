@@ -18,8 +18,9 @@
     @apply bg-transparent hover:bg-yellow-300 ;
     @apply text-yellow-300 hover:text-black;
     @apply rounded shadow hover:shadow-lg ;
-    @apply py-2 px-4 border border-yellow-300 hover:border-transparent;
+    @apply mb-4 py-2 px-4 border border-yellow-300 hover:border-transparent;
     @apply transition-all;
+    @apply w-36;
 }
 .button-black{
     @apply bg-transparent hover:bg-gray-900 ;
