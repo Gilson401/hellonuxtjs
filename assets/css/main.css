@@ -7,7 +7,13 @@
 .sudoeste{ display: flex;    justify-content: flex-start; align-items:flex-end ;  }
 .oeste{    display: flex;    justify-content:flex-start;  align-items:center;  }
 .noroeste{ display: flex;    justify-content:flex-start;  align-items:flex-start;  }
-.centro{   display: flex;    justify-content:center;      align-items:center;  }
+
+.centro{
+    display: flex;
+    justify-content:center;
+    align-items:center;  
+}
+
 .tw-centro {@apply flex justify-center items-center;}
 .espaco-igual-envolto{  display: flex;   justify-content: space-around;   }
 .espaco-maximo-entre{  display: flex;   justify-content: space-between;   }
