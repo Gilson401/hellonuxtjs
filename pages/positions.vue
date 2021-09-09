@@ -5,6 +5,7 @@
     <div v-if="showModal" class="full-modal-bg centro" @click="outside">
       <div class="modal-content flex-col" @click="inside">
         <p>Conteúdo da div Full modal bg</p>
+        
         <button class="bg-blue-400" value="valueBtn1" @click="botao1">
           Form Botão 1
         </button>
@@ -15,18 +16,25 @@
     </div>
     <div>OUTSIDE CONTENT 2</div>
     <button class="bg-blue-700" @click="showModal = true">
-      Botão 1
+      HEre
     </button>
+    <fa icon="home" />
+    <fa icon="envelope" />
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'Basemodal',
+  components: {
+  },
   data () {
     return {
       showModal: true
     }
+  },
+  computed: {
   },
   methods: {
     inside (e) {
