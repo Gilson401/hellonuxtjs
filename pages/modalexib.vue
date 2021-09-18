@@ -9,10 +9,21 @@
         @customChange="updateFatherData"
       />
     </div>
+
+    <div class="centro w-full">
+      <div
+        class="button-black mb-2"
+      >
+        <NuxtLink to="/">
+          Voltar
+        </NuxtLink>
+      </div>
+    </div>
+
     <div class="w-full flex justify-center items-center">
       <div>
         <h1 class="text-2xl ">
-          Emiter feature
+          Demonstração de emmit do vue.
         </h1>
       
         <a href="https://www.youtube.com/watch?v=RXldGbtzZdI&t=239s" target="blank">
@@ -42,7 +53,7 @@ export default {
   },
   data () {
     return {
-      showModal: true,
+      showModal: false,
       fatherData: '',
       modalConfig: {
         title: 'Modal Invocado pelo Pai',

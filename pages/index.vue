@@ -27,7 +27,7 @@
         <ul>
           <li>- Nuxt JS</li>
           <li>- Vuex Store para armazenamento de estados </li>
-          <li>- Axios para consumo de api pública</li>
+          <li>- Axios para consumo de api</li>
           <li>- Tailwind CSS Framework de estilos </li>
         </ul>
 
@@ -44,6 +44,14 @@
         >
           <NuxtLink to="/modalexib">
             Modal e Emit
+          </NuxtLink>
+        </div>
+
+        <div
+          class="button-yellow"
+        >
+          <NuxtLink to="/plugintest">
+            Global Methods
           </NuxtLink>
         </div>
       </div>
