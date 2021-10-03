@@ -45,10 +45,13 @@ a{
 }
 
 .input-base {
+@apply w-40;
 @apply bordme-black;
-@apply rounded-sm;
+@apply rounded shadow hover:shadow-lg ;
 @apply mx-2;
 @apply my-2;
+@apply py-2; 
+@apply text-center;
 }
 
 
@@ -59,4 +62,15 @@ a{
 .page-enter,
 .page-leave-to {
   opacity: 0;
+}
+
+
+table{
+    @apply bordme-black;
+    @apply w-1/2;
+}
+th, td{
+    @apply text-center;
+    @apply h-10;
+    @apply border;
 }

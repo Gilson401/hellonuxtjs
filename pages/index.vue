@@ -62,7 +62,6 @@
             Aniversários
           </NuxtLink>
         </div>
-
       </div>
       <div class="mt-12 mb-6 md:mb-0 md:mt-0 ml-0 md:ml-12 lg:w-2/3  centro">
         <div class="h-48 centro">

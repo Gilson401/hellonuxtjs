@@ -1,4 +1,7 @@
 import dayjs from 'dayjs'
+const utc = require('dayjs/plugin/utc')
+dayjs.extend(utc)
+
 export default (context, inject) => {
   const formatToDayJsStringDate = (date) => {
     if (!date) { return dayjs('0000-00-00') }
@@ -6,22 +9,12 @@ export default (context, inject) => {
     const day = date.split('/')[0]
     const month = date.split('/')[1]
     const year = date.split('/')[2]
-        
-    return year + '-' + ('0' + month).slice(-2) + '-' + ('0' + day).slice(-2)
+    // return dayjs(year + '-' + ('0' + month).slice(-2) + '-' + ('0' + day).slice(-2))    
+    // return dayjs.utc(year + '-' + ('0' + month).slice(-2) + '-' + ('0' + day).slice(-2))
+    return dayjs(year + '-' + ('0' + month).slice(-2) + '-' + ('0' + day).slice(-2)).utc()
   }
   inject('formatToDayJsStringDate', formatToDayJsStringDate)
   context.$formatToDayJsStringDate = formatToDayJsStringDate
-
-  const brlCurrencyFormat = (val) => {
-    return 'R$ ' +
-            val.toLocaleString('pt-BR', {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2
-            })
-  }
-
-  inject('brlCurrencyFormat', brlCurrencyFormat)
-  context.$brlCurrencyFormat = brlCurrencyFormat
 
   const formatDate = (date, dayJsFormat = 'DD/MM/YYYY') => {
     if (date === null) { return '-' }

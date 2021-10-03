@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div class="container mx-auto">
+    <h1 class="text-2xl">
+      Lista de aniversariantes.
+    </h1>
     <birthday-form />
     <birthday-list />
   </div>

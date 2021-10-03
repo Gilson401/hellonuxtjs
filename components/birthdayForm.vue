@@ -11,15 +11,15 @@
     <input
       id="date"
       v-model="person.birthdate"
-      class="input-base"
+      class="input-base "
       type="text"
       name="niver"
       autocomplete="off"
     >
-    <button :disabled="!person.birthdate || !person.name" class="button-black" @click="useAction">
+    <button :disabled="!person.birthdate || !person.name" class="button-yellow" @click="useAction">
       Action Dispatch
     </button>
-    <button :disabled="!person.birthdate || !person.name" class="button-black" @click="directCommit">
+    <button :disabled="!person.birthdate || !person.name" class="button-yellow" @click="directCommit">
       Direct Commit
     </button>
     <p>{{ candidateData("Criando: ") }}</p>
@@ -33,7 +33,7 @@ export default {
     return {
       person: {
         name: 'Gilson',
-        birthdate: '01/05/2021'
+        birthdate: '03/10/2021'
       }
     }
   },
