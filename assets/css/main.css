@@ -34,7 +34,7 @@
     @apply hover:text-white;
     @apply rounded shadow hover:shadow-lg ;
     @apply py-2 text-center border border-gray-900 hover:border-transparent;
-    @apply w-16;
+    @apply w-40;
     @apply transition-all;
 }
 button{
@@ -49,4 +49,14 @@ a{
 @apply rounded-sm;
 @apply mx-2;
 @apply my-2;
+}
+
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
 }

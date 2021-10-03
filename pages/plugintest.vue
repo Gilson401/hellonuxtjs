@@ -1,5 +1,5 @@
 <template>
-  <div class="centro h-screen flex-col">
+  <div class="px-3 container centro h-screen flex-col">
     <div>
       <div class="w-full ">
         <div
