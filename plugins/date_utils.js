@@ -1,24 +1,24 @@
 import dayjs from 'dayjs'
-const utc = require('dayjs/plugin/utc')
-dayjs.extend(utc)
 
 export default (context, inject) => {
   const formatToDayJsStringDate = (date) => {
-    if (!date) { return dayjs('0000-00-00') }
-        
-    const day = date.split('/')[0]
-    const month = date.split('/')[1]
-    const year = date.split('/')[2]
-    // return dayjs(year + '-' + ('0' + month).slice(-2) + '-' + ('0' + day).slice(-2))    
-    // return dayjs.utc(year + '-' + ('0' + month).slice(-2) + '-' + ('0' + day).slice(-2))
-    return dayjs(year + '-' + ('0' + month).slice(-2) + '-' + ('0' + day).slice(-2)).utc()
+    if (!date) { return this.dayjs('0000-00-00') }
+    const [day, month, year] = [date.split('/')[0], date.split('/')[1], date.split('/')[2]]
+    return dayjs(year + '-' + ('0' + month).slice(-2) + '-' + ('0' + day).slice(-2))
   }
   inject('formatToDayJsStringDate', formatToDayJsStringDate)
   context.$formatToDayJsStringDate = formatToDayJsStringDate
 
+  const brformatToUTC = (date) => {
+    if (!date) { return this.dayjs('0000-00-00') }
+    return dayjs(date, 'DD/MM/YYYY')
+  }
+  inject('brformatToUTC', brformatToUTC)
+  context.$brformatToUTC = brformatToUTC
+
   const formatDate = (date, dayJsFormat = 'DD/MM/YYYY') => {
     if (date === null) { return '-' }
-    return dayjs(date).format(dayJsFormat)
+    return this.$dayjs(date).format(dayJsFormat)
   }
 
   inject('formatDate', formatDate)

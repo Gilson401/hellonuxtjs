@@ -32,8 +32,9 @@ export const actions = {
     const editedPerson = {
       ...person,
       id: getters.nextIdAvaiable(state),
-      birthdate: this.$formatToDayJsStringDate(person.birthdate)
+      birthdate: this.$dayjs(person.birthdate, 'DD/MM/YYYY').utc()
     }
+    //   birthdate: this.$formatToDayJsStringDate(person.birthdate)
 
     commit('ADD_BIRTHDATE_LIST_ITEM', editedPerson)
   }
@@ -42,15 +43,13 @@ export const actions = {
 export const getters = {
 
   nextIdAvaiable (state) {
-    // debugger
-    const novo = [...state.persons]
-    const newIndex = novo.length === 0
+    const newIndex = state.persons.length === 0
       ? 1
-      : novo.sort(function (a, b) {
-        if (a.id < b.id) return 1
-        if (a.id > b.id) return -1
-        return 0
-      })[0].id + 1
+      : [...state.persons].sort(function (a, b) {
+          if (a.id < b.id) return 1
+          if (a.id > b.id) return -1
+          return 0
+        })[0].id + 1
     return newIndex
   },
 
@@ -60,7 +59,7 @@ export const getters = {
     }
   },
 
-  personsList (state) {
+  getBirthdayList (state) {
     return ({ id, name, birthday }) => {
       return state.persons.map((item) => {
         const obj = {}

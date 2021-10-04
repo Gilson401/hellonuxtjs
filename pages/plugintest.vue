@@ -30,7 +30,7 @@
           name="input1"
           autocomplete="off"
         >
-        <h1>{{ this.$countCaracters(input1) }}</h1>
+        <h1>{{ $countCaracters(input1) }}</h1>
       </div>
       <div class="flex  my-2">
         <input

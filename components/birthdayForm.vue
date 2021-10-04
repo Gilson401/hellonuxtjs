@@ -23,6 +23,14 @@
       Direct Commit
     </button>
     <p>{{ candidateData("Criando: ") }}</p>
+    <br>
+
+    <p>{{ dayjsIntance }} - this.$dayjs(this.person.birthdate, 'DD/MM/YYYY').utc()</p>
+    <br>
+    <p>{{ formatedDate }} - Meu plugin formatToDayJsStringDate: </p>
+    <br>
+    <p>{{ brformatToUTC }} - Meu plugin brformatToUTC: </p>
+    <br>
   </div>
 </template>
 
@@ -38,11 +46,14 @@ export default {
     }
   },
   computed: {
+    brformatToUTC () {
+      return this.$brformatToUTC(this.person.birthdate)
+    },
     candidateData () {
       return param => `${param} ${this.person.name} ${this.person.birthdate}`
     },
-    wrongComputed (param) {
-      return this.$formatToDayJsStringDate(this.person.birthdate) + param
+    dayjsIntance () {
+      return this.$dayjs(this.person.birthdate, 'DD/MM/YYYY').utc()
     },
     formatedDate () {
       return this.$formatToDayJsStringDate(this.person.birthdate)
@@ -57,6 +68,11 @@ export default {
         id: this.nextIdAvaiable
       }
     }
+  },
+  mounted () {
+    console.log('bla.utc()', this.$dayjs('03/10/2021', 'DD/MM/YYYY').utc())
+    console.log('utc(bla)', this.$dayjs.utc('03/10/2021', 'DD/MM/YYYY'))
+    console.log('no-utc', this.$dayjs('03/10/2021', 'DD/MM/YYYY'))
   },
   methods: {
     useAction () {
