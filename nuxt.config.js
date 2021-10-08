@@ -29,6 +29,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/csv.js',
+    '~/plugins/vue-json-csv.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
