@@ -22,6 +22,10 @@ export default {
     ]
   },
 
+  env: {
+    nasaKey: process.env.NASA_DEMO_KEY || 'http://localhost:3000'
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/main.css'

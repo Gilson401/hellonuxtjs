@@ -136,7 +136,7 @@ export default {
       if (!init || !end || this.errMessage() !== '') {
         return
       }
-      const key = ['DEMO_KEY', 'xbEqj2OOfMoxud9Gaelc2yKpFL123bBVPxBmTrJv']
+      const key = ['DEMO_KEY', process.env.nasaKey]
       const fetcheString = `https://api.nasa.gov/planetary/apod?api_key=${key[1]}&start_date=${init}&end_date=${end}`
       this.$store.commit('nasa/SET_LOADING_STATE', true)
       const load = await fetch(fetcheString).then(res =>

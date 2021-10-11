@@ -31,21 +31,17 @@
           <li>- Tailwind CSS Framework de estilos </li>
         </ul>
 
-        <div
-          class="button-yellow"
-        >
-          <NuxtLink to="/nasa">
-            Nasa Apod API
-          </NuxtLink>
-        </div>
+        <NuxtLink class="button-yellow" to="/nasa">
+          Nasa Apod API
+        </NuxtLink>
+      
+        <NuxtLink class="button-yellow" to="/modalexib">
+          Modal e Emit
+        </NuxtLink>
 
-        <div
-          class="button-yellow"
-        >
-          <NuxtLink to="/modalexib">
-            Modal e Emit
-          </NuxtLink>
-        </div>
+        <NuxtLink class="button-yellow" to="/dinamictable">
+          Table
+        </NuxtLink>
       </div>
       <div class="mt-12 mb-6 md:mb-0 md:mt-0 ml-0 md:ml-12 lg:w-2/3  centro">
         <div class="h-48 centro">

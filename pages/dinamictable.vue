@@ -1,5 +1,12 @@
 <template>
   <div class="container mx-auto">
+    <div
+      class="button-black mb-2 mt-2"
+    >
+      <NuxtLink to="/">
+        Voltar
+      </NuxtLink>
+    </div>
     <p class="text-2xl my-4">
       Carregamento de lista de clientes, e exportação dos dados para CSV.
     </p>
@@ -25,6 +32,22 @@
       </li>
     </ul>
 
+    <p>
+      Teste a aplicação colando endereços de apis no input abaixo. A api deve retornar um array de objetos simples e padronizados ou um único objeto simples.
+      Abaixo temos alguns exemplos de urls de apis públicas que podem ser usadas neste exemplo.
+    </p>
+
+    <p>https://api.chucknorris.io/jokes/random</p>
+    <p>http://makeup-api.herokuapp.com/api/v1/products.json</p>
+    <p>http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1</p>
+
+    <input
+      v-model="urlInput"
+      class="border-2 border-gray-700 my-4 w-1/3"
+      type="text"
+      placeholder="Digite a URL do recurso a ser consumido"
+    >
+
     <div class="flex space-x-4">
       <button class="button-black" @click="getlista">
         Carregar lista
@@ -33,7 +56,6 @@
         vue-json-csv - NEW
       </download-csv>
     </div>
-
     <hr class="my-4">
     <Loading v-if="isLoading" />
     <div v-if="clients.length > 0">
@@ -48,16 +70,26 @@ export default {
     return {
       clients: [],
       isLoading: false,
-      resource: 'plans'
+      resource: 'plans',
+      urlInput: ''
     }
   },
   methods: {
+    isArray (what) {
+      return Object.prototype.toString.call(what) === '[object Array]'
+    },
     async getlista () {
+      this.clients = []
       this.isLoading = true
       const res = await this.$axios.$get(
-        `https://615ff269faa03600179fb7ab.mockapi.io/${this.resource}`
+        `${this.urlInput}`
       )
-      this.clients = res
+      if (this.isArray(res)) {
+        this.clients = res
+      } else {
+        this.clients = [res]
+      }
+
       this.isLoading = false
     }
     
