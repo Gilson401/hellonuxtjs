@@ -3,7 +3,7 @@
     <table class="min-w-max w-full table-auto">
       <thead>
         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-          <th v-for="field in fields" :key="field">
+          <th v-for="(field, index) in fields" :key="index">
             {{ field }}
           </th>
         </tr>
@@ -14,7 +14,7 @@
           :key="client"
           class="border-b border-gray-200 hover:bg-gray-100"
         >
-          <td v-for="field in fields" :key="field">
+          <td v-for="(field, index) in fields" :key="index">
             {{ client[field] }}
           </td>
         </tr>
