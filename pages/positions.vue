@@ -6,7 +6,7 @@
           <p class="mx-auto pt-4">
             Conteúdo do Modal
           </p>
-          <hr/>
+          <hr>
 
           <p v-if="counter" class="mx-auto">
             <span class="inline-block border rounded text-white bg-indigo-500 px-2 py-1 text-xs font-bold mr-3">
@@ -118,7 +118,7 @@ button{
 }
 
 .espaco-maximo-entre-vert{
-    display: flex; 
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
