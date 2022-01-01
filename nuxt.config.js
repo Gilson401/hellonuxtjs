@@ -58,9 +58,6 @@ export default {
   axios: {
     baseURL: 'https://api.nasa.gov/planetary/apod',
     proxy: true
-  },
-
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
   }
+
 }

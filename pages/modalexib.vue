@@ -1,9 +1,7 @@
-/* eslint-disable no-console */
-/* eslint-disable no-console */
 <template>
-  <div class="bg-gray-200">
+  <div>
     <div v-show="showModal" class="relative h-full w-full">
-      <modal
+      <Modal
         :config="modalConfig"
         @closeModal="fecharModal"
         @customChange="updateFatherData"
@@ -12,37 +10,30 @@
     <div class="w-full flex justify-center items-center">
       <div>
         <h1 class="text-2xl ">
-          Emiter feature
+          Aplicando Emmit
         </h1>
-      
-        <a href="https://www.youtube.com/watch?v=RXldGbtzZdI&t=239s" target="blank">
-          Video Aula
-        </a>
+        <p>
+          O método  updateFatherData é passado para o filho para disparar um emit.
+        </p>
       </div>
     </div>
-    <div class="bg-gray-200 flex items-center justify-center h-screen">
+    <div class="flex items-center justify-center h-screen">
       <div class="w-1/3 flex flex-col justify-center items-center">
         <h1 class="text-2xl ">
           fatherData: {{ fatherData }}
         </h1>
         <br>
-        <button class="btn" @click="showModal=true">
-          Show Modal
-        </button>
+        <Button text="Show Modal" @click="showModal=true" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Modal from '../components/Modal.vue'
 export default {
-  components: {
-    Modal
-  },
   data () {
     return {
-      showModal: true,
+      showModal: false,
       fatherData: '',
       modalConfig: {
         title: 'Modal Invocado pelo Pai',
@@ -52,6 +43,16 @@ export default {
         cancelButton: true
       }
     }
+  },
+  head: {
+    title: 'Usando modais',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Aplicando modais'
+      }
+    ]
   },
   methods: {
     fecharModal () {

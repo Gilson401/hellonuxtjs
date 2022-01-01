@@ -1,20 +1,5 @@
 <template>
-  <!-- <div class="container mx-auto">
-    <h1 class="text-3xl font-bold text-center mb-4">
-      
-    </h1>
-    <h3>Neste projeto são utilizadas as seguintes libs e frameworks:</h3>
-    <ul>
-      <li>Nuxt JS</li>
-      <li>Vuex Store para Armazenamento de estados </li>
-      <li>Axios para Consumo de api pública</li>
-      <li>Tailwind CSS Framework de estilos </li>
-    </ul>
-  </div> -->
-
-  <!-- component -->
-  
-  <div class="bg-black min-h-screen text-white py-20">
+  <div class="min-h-screen text-white py-20">
     <div class="container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24">
       <div class="flex flex-col w-full  justify-center items-start p-8">
         <h1 class="text-3xl md:text-5xl text-yellow-300 tracking-loose">
@@ -30,26 +15,14 @@
           <li>- Axios para consumo de api pública</li>
           <li>- Tailwind CSS Framework de estilos </li>
         </ul>
-
-        <NuxtLink class="button-yellow" to="/nasa">
-          Nasa Apod API
-        </NuxtLink>
-      
-        <NuxtLink class="button-yellow" to="/modalexib">
-          Modal e Emit
-        </NuxtLink>
-
-        <NuxtLink class="button-yellow" to="/dinamictable">
-          Table
-        </NuxtLink>
       </div>
       <div class="mt-12 mb-6 md:mb-0 md:mt-0 ml-0 md:ml-12 lg:w-2/3  centro">
         <div class="h-48 centro">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/120px-Vue.js_Logo_2.svg.png">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/120px-Vue.js_Logo_2.svg.png" alt="vuelogo">
             
-          <img src="~/assets/nuxt-icon-removebg-preview.png">
+          <img src="~/assets/nuxt-icon-removebg-preview.png" alt="nuxt logo">
           
-          <img src="https://symbols.getvecta.com/stencil_97/3_tailwind-css-icon.43c02f69bf.png">
+          <img src="~/assets/tailwind.svg" alt="tailwindlogo">
         </div>
       </div>
     </div>
@@ -63,9 +36,18 @@ export default {
       randomStartDate: '2021-07-01'
     }
   },
+  head: {
+    title: 'Hello Nuxt Home',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Veja minhas skills'
+      }
+    ]
+  },
   mounted () {
     this.$store.dispatch('nasa/getNasaItems')
-    // this.getlista()
   },
   methods: {
     getlista () {
@@ -93,4 +75,17 @@ img{
     max-width: 33%;
 }
 .oeste{    display: flex;    justify-content:flex-start;  align-items:center;  }
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 2px 2px;
+  grid-template-areas:
+    "a1 b1 c1";
+}
+.a1 { grid-area: a1; }
+.b1 { grid-area: b1; }
+.c1 { grid-area: c1; }
+
 </style>

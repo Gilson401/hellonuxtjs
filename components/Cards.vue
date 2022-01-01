@@ -5,13 +5,6 @@
       <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-col">
           <div class="flex flex-wrap flex-col py-6 px-4 mb-12">
-            <div
-              class="button-black mb-2"
-            >
-              <NuxtLink to="/">
-                Voltar
-              </NuxtLink>
-            </div>
             <h1
               class="
               text-gray-900

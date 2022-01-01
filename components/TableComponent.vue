@@ -1,12 +1,5 @@
 <template>
   <div class="container mx-auto">
-    <div
-      class="button-black mb-2 mt-2"
-    >
-      <NuxtLink to="/">
-        Voltar
-      </NuxtLink>
-    </div>
     <p class="text-2xl my-4">
       Carregamento de lista de clientes, e exportação dos dados para CSV.
     </p>
@@ -73,6 +66,16 @@ export default {
       resource: 'plans',
       urlInput: ''
     }
+  },
+  head: {
+    title: 'Tabelas e Csv',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'uso de componente datatable com exportação de dados para csv'
+      }
+    ]
   },
   methods: {
     isArray (what) {

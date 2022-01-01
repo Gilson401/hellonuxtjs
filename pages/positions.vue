@@ -1,22 +1,50 @@
 <template>
   <div>
-    <div>OUTSIDE CONTENT 1</div>
-    <!-- // eslint-disable-next-line no-console -->
-    <div v-if="showModal" class="full-modal-bg centro" @click="outside">
-      <div class="modal-content flex-col" @click="inside">
-        <p>Conteúdo da div Full modal bg</p>
-        <button class="bg-blue-400" value="valueBtn1" @click="botao1">
-          Form Botão 1
-        </button>
-        <button class="bg-blue-400" value="valueBtn1" @click="closeModal">
-          Form Fechar
-        </button>
+    <div v-if="showModal" class="full-modal-bg centro " @click="closeFromOutside">
+      <div class="modal-content flex-col " @click="inside">
+        <div class="grid grid-cols-1 gap-2 place-content-center h-full border rounded espaco-maximo-entre-vert">
+          <p class="mx-auto">
+            Conteúdo do Modal
+          </p>
+          <hr/>
+
+          <p v-if="counter" class="mx-auto">
+            <span class="inline-block border rounded text-white bg-indigo-500 px-2 py-1 text-xs font-bold mr-3">
+              Clicou {{ counter }} vezes e não propagou o evento disparando o fechar.
+            </span>
+          </p>
+
+          <button
+            class="mx-auto"
+            @click="stopPropagation"
+          >
+            Form Button 1
+          </button>
+
+          <p v-if="counterInside" class="mx-auto">
+            <span class="inline-block border rounded text-white bg-indigo-500 px-2 py-1 text-xs font-bold mr-3">
+              Clicou na área do modal {{ counterInside }} vezes e não propagou o evento disparando o fechar.
+            </span>
+          </p>
+
+          <button
+            class="mx-auto"
+            @click="closeModal"
+          >
+            Fechar modal
+          </button>
+        </div>
       </div>
     </div>
-    <div>OUTSIDE CONTENT 2</div>
-    <button class="bg-blue-700" @click="showModal = true">
-      Botão 1
-    </button>
+    <HnTitle
+      text="Modal e propagação de eventos"
+      selected-component="h1"
+    />
+    <p />
+    <Button
+      text="Abrir Modal"
+      @click="showModal = true"
+    />
   </div>
 </template>
 
@@ -25,21 +53,36 @@ export default {
   name: 'Basemodal',
   data () {
     return {
-      showModal: true
+      showModal: true,
+      counter: 0,
+      counterInside: 0
     }
+  },
+  head: {
+    title: 'Tabelas e Csv',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Verifica propagação de eventos ao clicar no modal'
+      }
+    ]
   },
   methods: {
     inside (e) {
-      // no onclick, impede propagação
+      this.counterInside += 1
       e.stopPropagation()
     },
-    outside (e) {
+    closeFromOutside () {
       this.showModal = false
     },
-    botao1 (e) {
+    stopPropagation (e) {
+      this.counter += 1
       e.stopPropagation(e)
     },
     closeModal (e) {
+      this.counterInside = 0
+      this.counter = 0
       this.showModal = false
       e.stopPropagation()
     }
@@ -47,7 +90,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="postcss" scoped>
 
 .full-modal-bg {
   position: absolute;
@@ -67,5 +110,16 @@ export default {
   width: 500px;
   height: 300px;
   background-color: white;
+}
+
+button{
+    @apply w-36 transition-all my-2 bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-black ;
+    @apply rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent;
+}
+
+.espaco-maximo-entre-vert{
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
 }
 </style>
