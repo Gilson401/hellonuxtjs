@@ -3,7 +3,7 @@
     <div v-if="showModal" class="full-modal-bg centro " @click="closeFromOutside">
       <div class="modal-content flex-col " @click="inside">
         <div class="grid grid-cols-1 gap-2 place-content-center h-full border rounded espaco-maximo-entre-vert">
-          <p class="mx-auto">
+          <p class="mx-auto pt-4">
             Conteúdo do Modal
           </p>
           <hr/>
@@ -18,7 +18,7 @@
             class="mx-auto"
             @click="stopPropagation"
           >
-            Form Button 1
+            Click-me
           </button>
 
           <p v-if="counterInside" class="mx-auto">
@@ -40,7 +40,7 @@
       text="Modal e propagação de eventos"
       selected-component="h1"
     />
-    <p />
+    <p> Esta page implementa uma gestão de eventos click para evitar que o fechamento do modal ocorra fora do esperado. </p>
     <Button
       text="Abrir Modal"
       @click="showModal = true"
