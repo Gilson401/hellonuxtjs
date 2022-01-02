@@ -1,3 +1,7 @@
+:root {
+    --main-bg-color: coral;
+}
+
 .norte{    display: flex;    justify-content:center;      align-items:flex-start;  }
 .nordeste{ display: flex;    justify-content:flex-end;    align-items:flex-start;  }
 .leste{    display: flex;    justify-content:flex-end;    align-items:center;    }

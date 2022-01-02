@@ -1,125 +1,101 @@
 <template>
   <div>
-    <div v-if="showModal" class="full-modal-bg centro " @click="closeFromOutside">
-      <div class="modal-content flex-col " @click="inside">
-        <div class="grid grid-cols-1 gap-2 place-content-center h-full border rounded espaco-maximo-entre-vert">
-          <p class="mx-auto pt-4">
-            Conteúdo do Modal
-          </p>
-          <hr>
-
-          <p v-if="counter" class="mx-auto">
-            <span class="inline-block border rounded text-white bg-indigo-500 px-2 py-1 text-xs font-bold mr-3">
-              Clicou {{ counter }} vezes e não propagou o evento disparando o fechar.
-            </span>
-          </p>
-
-          <button
-            class="mx-auto"
-            @click="stopPropagation"
-          >
-            Click-me
-          </button>
-
-          <p v-if="counterInside" class="mx-auto">
-            <span class="inline-block border rounded text-white bg-indigo-500 px-2 py-1 text-xs font-bold mr-3">
-              Clicou na área do modal {{ counterInside }} vezes e não propagou o evento disparando o fechar.
-            </span>
-          </p>
-
-          <button
-            class="mx-auto"
-            @click="closeModal"
-          >
-            Fechar modal
-          </button>
+    <div class="root">
+      <div class="w-96 h-96 relative border-2 border-indigo-600">
+        bloco 1
+        <div class="positioning">
+          Serei posicionado!
         </div>
       </div>
+
+      <div class="w-96 h-96 border-2 border-indigo-600">
+        Bloco 2 sem relative
+        <div class="positioning w-96 h-10">
+          <p>Meu pai BLOCO 2 não tem relative</p>
+        </div>
+      </div>
+
+      <div class="w-96 h-96 relative border-2 border-indigo-600">
+        Bloco 3 &#9989;
+        <div class="positioning">
+          Serei posicionado! &#129321;
+        </div>
+      </div>
+      <div :style="{ color: activeColor, fontSize: fontSize + 'px' }">
+        Er
+      </div>
     </div>
-    <HnTitle
-      text="Modal e propagação de eventos"
-      selected-component="h1"
-    />
-    <p> Esta page implementa uma gestão de eventos click para evitar que o fechamento do modal ocorra fora do esperado. </p>
-    <Button
-      text="Abrir Modal"
-      @click="showModal = true"
-    />
+    <div id="div1">
+      bla
+    </div>
+
+    <a class="googlefont" href="https://www.npmjs.com/package/@nuxtjs/google-fonts">Como colocar fontes do google no Nuxt - Npm</a>
+    <a class="block" href="https://stackoverflow.com/questions/68165911/how-to-efficiently-load-google-fonts-in-nuxt">Como colocar fontes do google no Nuxt -StackOverflow</a>
+    
+    <section>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3551.2519947735864!2d-48.610243184950725!3d-27.116871783040022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d8b1cff7caaa1d%3A0xfc4a5f0a6ae200d8!2sR.%20205%20-%20Morretes%2C%20Itapema%20-%20SC%2C%2088220-000!5e0!3m2!1spt-BR!2sbr!4v1641135040055!5m2!1spt-BR!2sbr"
+        width="100%"
+        height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+      />
+    </section>
+    <footer :style="footerStyles">
+      <p>&copy; 2020</p>
+    </footer>
   </div>
 </template>
-
 <script>
 export default {
-  name: 'Basemodal',
   data () {
     return {
-      showModal: true,
-      counter: 0,
-      counterInside: 0
-    }
-  },
-  head: {
-    title: 'Tabelas e Csv',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Verifica propagação de eventos ao clicar no modal'
+      activeColor: 'red',
+      fontSize: 30,
+      footerStyles: {
+        display: 'block',
+        backgroundColor: 'black',
+        color: 'white',
+        height: '200px',
+        textAlign: 'center',
+        padding: '5rem'
       }
-    ]
-  },
-  methods: {
-    inside (e) {
-      this.counterInside += 1
-      e.stopPropagation()
-    },
-    closeFromOutside () {
-      this.showModal = false
-    },
-    stopPropagation (e) {
-      this.counter += 1
-      e.stopPropagation(e)
-    },
-    closeModal (e) {
-      this.counterInside = 0
-      this.counter = 0
-      this.showModal = false
-      e.stopPropagation()
     }
   }
 }
 </script>
-
 <style lang="postcss" scoped>
 
-.full-modal-bg {
+a{
+    font-size: x-large;
+}
+.googlefont{
+    font-family: Mali;
+}
+
+#div2 {
+  background-color: var(--main-bg-color);
+}
+
+.positioning {
   position: absolute;
-  top: 0; left: 0;
-  z-index: 50;
-  width: 100vw; height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
+  top: 210px;
+  left: 30px;
+  right: 70px;
+  bottom: 100px;
+  background-color: brown;
 }
 
-.center-content {
+#div1 {
+  height: 100px;
+  width: max(50%, 300px);
+}
+
+p:hover {
+    border-color: #088C19;
+}
+.root {
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  width: 500px;
-  height: 300px;
-  background-color: white;
-}
-
-button{
-    @apply w-36 transition-all my-2 bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-black ;
-    @apply rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent;
-}
-
-.espaco-maximo-entre-vert{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 </style>

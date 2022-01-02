@@ -29,6 +29,11 @@
       />
 
       <Button
+        text="Propagations"
+        @click="$router.push('/propagations')"
+      />
+
+      <Button
         text="Positions"
         @click="$router.push('/positions')"
       />
