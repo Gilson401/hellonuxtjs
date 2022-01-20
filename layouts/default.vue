@@ -37,6 +37,11 @@
         text="Positions"
         @click="$router.push('/positions')"
       />
+
+      <Button
+        text="Drawer"
+        @click="$router.push('/drawerexample')"
+      />
     </div>
 
     <div class="container mx-auto px-8">

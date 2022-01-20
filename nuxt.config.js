@@ -75,6 +75,10 @@ export default {
   axios: {
     baseURL: 'https://api.nasa.gov/planetary/apod',
     proxy: true
+  },
+
+  server: {
+    port: 4500
   }
 
 }
