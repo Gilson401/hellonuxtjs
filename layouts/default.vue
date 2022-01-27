@@ -1,50 +1,30 @@
 <template>
-  <div>
+  <div class="container mx-auto">
+    <div class="flex w-full bg-gray-600 md:hidden justify-end">
+      <drawer-base>
+        <template #conteudo>
+          <Linkslist />
+        </template>
+
+        <template #triggerelement>
+          <p>
+            "opennavb"
+          </p>
+        </template>
+      </drawer-base>
+    </div>
     <div
-      class="container mx-auto px-8 flex space-x-2"
+      class="container mx-auto px-8 space-x-2 hidden md:flex"
     >
       <Button
-        text="Home"
-        @click="$router.push('/')"
-      />
-
-      <Button
-        text="Nasa Apod API"
-        @click="$router.push('/nasa')"
-      />
-
-      <Button
-        text="Modal e Emit"
-        @click="$router.push('/modalexib')"
-      />
-
-      <Button
-        text="Table"
-        @click="$router.push('/dinamictable')"
-      />
-        
-      <Button
-        text="Refs-example"
-        @click="$router.push('/refs-example')"
-      />
-
-      <Button
-        text="Propagations"
-        @click="$router.push('/propagations')"
-      />
-
-      <Button
-        text="Positions"
-        @click="$router.push('/positions')"
-      />
-
-      <Button
-        text="Drawer"
-        @click="$router.push('/drawerexample')"
+        v-for="(routeItem, index) in routesList"
+        :key="index"
+        :text="routeItem.label"
+        @click="$router.push(routeItem.route)"
       />
     </div>
 
-    <div class="container mx-auto px-8">
+    <div>
       <Nuxt />
     </div>
   </div>
@@ -52,10 +32,20 @@
 
 <script>
 
+import { routes } from '../resources/routes'
+import DrawerBase from '~/components/DrawerBase.vue'
+
 export default {
+  components: { DrawerBase },
   computed: {
     currentRouteName () {
       return this.$route.name
+    },
+    paths () {
+      return this.$test.pages
+    },
+    routesList () {
+      return routes.pages
     }
   }
 }

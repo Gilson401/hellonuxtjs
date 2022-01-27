@@ -8,7 +8,7 @@ const localVue = createLocalVue()
 
 localVue.use(Vuex)
 
-describe('Actions.vue', () => {
+describe('When user selects dates', () => {
   let actions
   let state
   let store

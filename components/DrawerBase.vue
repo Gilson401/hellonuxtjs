@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- partial:index.partial.html -->
     <label
       id="openmenu"
       for="menu-opener"
@@ -8,60 +7,48 @@
       aria-haspopup="true"
       role="button"
       aria-controls="menu"
-      class="OpenMenuButton"
-    >OPEN x MENU</label>
-
+      class=""
+    >
+    
+      <slot name="triggerelement">
+        SLOT triggerelement
+      </slot>
+    </label>
+ 
     <input
       id="menu-opener"
       type="checkbox"
       data-menu
+    
     >
-
+  
     <aside
       id="menu"
-      class="DrawerMenu"
+      class="DrawerMenu border-4 border-red-300"
       role="menu"
       aria-labelledby="openmenu"
     >
-      <nav class="Menu">
-        <h2>Awesome CSS Menu</h2>
-        <a role="menuitem" tabindex="-1" href="#">Menu
-          Item 01</a>
-        <a role="menuitem" tabindex="-1" href="#">Menu
-          Item 02</a>
-        <a role="menuitem" tabindex="-1" href="#">Menu
-          Item 03</a>
-        <a role="menuitem" tabindex="-1" href="#">Menu
-          Item 04</a>
-        <a role="menuitem" tabindex="-1" href="#">Menu
-          Item 05</a>
-        <a role="menuitem" tabindex="-1" href="#">Menu
-          Item 06</a>
-        <a role="menuitem" tabindex="-1" href="#">Menu
-          Item 07</a>
-        <a role="menuitem" tabindex="-1" href="#">Menu
-          Item 08</a>
-        <a role="menuitem" tabindex="-1" href="#">Menu
-          Item 09</a>
-        <a role="menuitem" tabindex="-1" href="#">Menu
-          Item 10</a>
-        <a role="menuitem" tabindex="-1" href="#">Menu
-          Item 11</a>
-        <a role="menuitem" tabindex="-1" href="#">Menu
-          Item 12</a>
-        <a role="menuitem" tabindex="-1" href="#">Menu
-          Item 13</a>
-        <a role="menuitem" tabindex="-1" href="#">Menu
-          Item 14</a>
-        <a role="menuitem" tabindex="-1" href="#">Menu
-          Item 15</a>
+      <nav class="Menu  border-4 border-yellow-300 ">
+        <div class="w-full flex justify-between pb-4 border-4 border-green-600">
+          <div class="inline-block">
+            <h2>Puro CSS Menu</h2>
+          </div>
+          <label
+            for="menu-opener"
+            class="inline "
+          > X </label>
+        </div>
+        <div class="pl-2 py-9 border border-yellow-300 w-52 rounded">
+          <slot name="conteudo">
+            42 slotconteudo em nav
+          </slot>
+        </div>
       </nav>
       <label
         for="menu-opener"
         class="MenuOverlay"
-      > other label for menu opener</label>
+      />
     </aside>
-    <!-- partial -->
   </div>
 </template>
 
@@ -73,6 +60,7 @@
   font-weight: 900;
   word-spacing: 140%;
   letter-spacing: 4px;
+  
 }
 
 .DrawerMenu {
@@ -80,6 +68,7 @@
   z-index: 99;
   width: 100vw;
   height: 100vh;
+  left: 0;
   top: 0;
   bottom: 0;
   transform: translateX(-100%);
@@ -107,7 +96,7 @@
   display: block;
   flex-flow: column wrap;
   transform: translateX(-30%);
-  opacity: 0;
+  opacity: 0.1;
   color: #fff;
   transition: all 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
   transition-delay: 0;
@@ -117,7 +106,8 @@
   box-sizing: border-box;
   padding: 24px;
   overflow: auto;
-  -webkit-overflow-scrolling: touch
+  -webkit-overflow-scrolling: touch;
+
 }
 
 @media (min-width: 30em) {
