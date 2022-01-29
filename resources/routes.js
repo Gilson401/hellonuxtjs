@@ -5,6 +5,7 @@ export const routes = {
     { route: '/refs-example', label: 'Refs' },
     { route: '/propagations', label: 'Propagations' },
     { route: '/positions', label: 'Positions' },
-    { route: '/drawerexample', label: 'Css drawer' }
+    { route: '/drawerexample', label: 'Css drawer' },
+    { route: '/vmodelcomponent', label: 'Vmodel Component' }
   ]
 }

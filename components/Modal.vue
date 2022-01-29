@@ -1,7 +1,7 @@
 <template>
   <div
     class="z-40 w-screen h-screen centro absolute bg-black-opacity"
-    @click="$emit('closeModal')"
+   
   >
     <div
       class="
@@ -80,7 +80,7 @@ export default {
       }
     }
   },
-  emits: ['closeModal', 'customChange'],
+  //   emits: ['closeModal', 'customChange'],
   data () {
     return {
       modalInputValue: ''

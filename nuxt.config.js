@@ -34,7 +34,6 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/csv.js',
-    '~/plugins/paths.js',
     '~/plugins/vue-json-csv.js'
   ],
 
@@ -80,6 +79,14 @@ export default {
 
   server: {
     port: 4500
+  },
+  storybook: {
+    // Options
+    stories: [
+      '~/components/*.stories.js',
+      '~/components/**/*.stories.js',
+      '~/stories/**/*.stories.js',
+      '~/custom/path/sample.stories.js'
+    ]
   }
-
 }

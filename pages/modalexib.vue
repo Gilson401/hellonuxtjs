@@ -5,6 +5,7 @@
         :config="modalConfig"
         @closeModal="fecharModal"
         @customChange="updateFatherData"
+        @click.native="meuEvento"
       />
     </div>
     <div class="w-full flex justify-center items-center">
@@ -26,14 +27,30 @@
         <Button text="Show Modal" @click="showModal=true" />
       </div>
     </div>
+
+<div class="h-12 w-1/4">
+
+    <Divcustom v-model="booleanA" @change="eventoParaChange" />
+</div>
+
+
+<div class="h-12 w-1/4">
+
+    <Divcustom v-model="booleanA"  />
+</div>
+
+
   </div>
 </template>
 
 <script>
+// import Divcustom from '~/components/Divcustom.vue'
 export default {
+//   components: { Divcustom },
   data () {
     return {
       showModal: false,
+      booleanA: false,
       fatherData: '',
       modalConfig: {
         title: 'Modal Invocado pelo Pai',
@@ -62,8 +79,16 @@ export default {
     updateFatherData (val) {
       this.fatherData = val
       this.showModal = false
+    },
+    meuEvento () {
+      console.log('method from modalexib.vue meuEvento')
+    },
+    eventMouseEnterFather () {
+      console.log('method from modalexib.vue eventMouseEnterFather')
+    },
+    eventoParaChange () {
+      console.log('eventoParaChange')
     }
-
   }
 }
 </script>
