@@ -28,18 +28,13 @@
       </div>
     </div>
 
-<div class="h-12 w-1/4">
+    <div class="h-12 w-1/4">
+      <Divcustom v-model="booleanA" @change="eventoParaChange" />
+    </div>
 
-    <Divcustom v-model="booleanA" @change="eventoParaChange" />
-</div>
-
-
-<div class="h-12 w-1/4">
-
-    <Divcustom v-model="booleanA"  />
-</div>
-
-
+    <div class="h-12 w-1/4">
+      <Divcustom v-model="booleanA" />
+    </div>
   </div>
 </template>
 

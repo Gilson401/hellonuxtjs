@@ -2,9 +2,11 @@
   <label>
     <span>Input text custom</span>
     <input
+      v-bind="$attrs"
       class="textarea"
       type="text"
       :text="text"
+      v-on="$listeners"
       @change="$emit('change', $event.target.value)"
     >
   </label>

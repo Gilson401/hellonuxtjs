@@ -3,7 +3,11 @@
     <h2>V-model em componente </h2>
     <p>Os dois componentes abaixo recebem v-model</p>
     <div class="h-12  flex space-x-2 border-2 border-yellow-500">
-      <Inputcustom v-model="fatherData" @change="eventoParaChange" />
+      <Inputcustom
+        v-model="fatherData"
+        placeholder="placeholder example"
+        @change="eventoParaChange"
+      />
       <span v-if="fatherData"> {{ fatherData }} </span>
     </div>
 
@@ -21,7 +25,8 @@ export default {
   data () {
     return {
       booleanB: false,
-      fatherData: ''
+      fatherData: '',
+      size: ''
     }
   },
   head: {
@@ -33,6 +38,19 @@ export default {
         content: 'Aplicando v-model em componentes customizados'
       }
     ]
+  },
+
+  computed: {
+    computedSize () {
+      switch (this.size) {
+        case 'xs':
+          return this.booleanB + ' - ' + 'w-50'
+        case 'sm':
+          return 'w-8 h-8'
+        default:
+          return 'w-10 h-10'
+      }
+    }
   },
   methods: {
     eventoParaChange (e) {

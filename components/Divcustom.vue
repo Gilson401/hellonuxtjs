@@ -2,8 +2,10 @@
   <label for="">
     <span>{{ label }}</span>
     <input
+      v-bind="$attrs"
       type="checkbox"
       :checked="checked"
+      v-on="$listeners"
       @change="$emit('change', $event.target.checked)"
     >
   </label>
