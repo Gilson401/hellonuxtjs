@@ -12,6 +12,7 @@ export const routes = {
     { route: '/lista', label: 'Lista' },
     { route: '/provideinject', label: 'Provide Inject' },
     { route: '/mapactiongetters', label: 'Map Action Getters' },
+    { route: '/testdispatch', label: 'test dispat' },
     { route: '/dropdown', label: 'Dropdown' }
   ]
 }
