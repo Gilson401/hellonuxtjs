@@ -1,13 +1,12 @@
 <template>
   <div>
     <p>PAI</p>
-    <Button :text="'father BTN Increase ' + numberfatherVar " @click="fatherinMethodIncrease" />
+    <Button v-if="!esconder" :text="'father BTN Increase ' + numberfatherVar " @click="fatherinMethodIncrease" />
     <slot />
   </div>
 </template>
 
 <script>
-
 
 export default {
 
@@ -22,6 +21,12 @@ export default {
       nullValueFather: this.nullValueFather,
       numberfatherVar: this.numberfatherVar,
       reactive: this.reactive
+    }
+  },
+  props: {
+    esconder: {
+      type: Boolean,
+      default: false
     }
   },
   data () {

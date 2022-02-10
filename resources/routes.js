@@ -13,6 +13,7 @@ export const routes = {
     { route: '/provideinject', label: 'Provide Inject' },
     { route: '/mapactiongetters', label: 'Map Action Getters' },
     { route: '/testdispatch', label: 'test dispat' },
+    { route: '/paifilhoestilo', label: 'Estilos' },
     { route: '/dropdown', label: 'Dropdown' }
   ]
 }
