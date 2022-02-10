@@ -16,7 +16,7 @@ describe('MobileFeedSorting', () => {
   let stubs
   let computed
   let mocks
-
+let methods
   beforeEach(() => {
     getters = {
       'auth/user': () => {
@@ -24,6 +24,10 @@ describe('MobileFeedSorting', () => {
           role: 'admin'
         }
       }
+    }
+
+    methods = {
+        setSorting: jest.fn()
     }
 
     actions = {
@@ -57,8 +61,7 @@ describe('MobileFeedSorting', () => {
             sort: 'new'
           }
         }
-      },
-      setSorting: (val) => { return val }
+      }
     }
 
     wrapper = shallowMount(MobileFeedSorting, {
@@ -66,6 +69,9 @@ describe('MobileFeedSorting', () => {
       store,
       stubs,
       getters,
+      methods: {
+        setSorting: jest.fn()
+    },
       computed
     })
   })
@@ -127,7 +133,8 @@ describe('MobileFeedSorting', () => {
     //   const iconeAttr = icon.attributes('icon')
      await wrapper.find('[jest-IfyDropdownItem]').trigger('click')
      await wrapper.vm.$nextTick()
-    expect(mocks.setSorting).toHaveBeenCalledWith(item.type)
+    expect(wrapper.vm.setSorting).toHaveBeenCalledWith(item.type)
+    // ler https://github.com/vuejs/vue-test-utils/issues/1027
     
       //   expect(
     //     sortingParams.find((item) => {
