@@ -1,12 +1,15 @@
+/* eslint-disable no-console */
 /* eslint-disable indent */
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { config, shallowMount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
 import MobileFeedSorting from '@/components/MobileFeedSorting.vue'
 
+config.showDeprecationWarnings = false
+config.methods['setSorting'] = () => {}
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
-let wrapper
+let theMountedComponent
 
 describe('MobileFeedSorting', () => {
   let store
@@ -16,7 +19,7 @@ describe('MobileFeedSorting', () => {
   let stubs
   let computed
   let mocks
-let methods
+  
   beforeEach(() => {
     getters = {
       'auth/user': () => {
@@ -24,10 +27,6 @@ let methods
           role: 'admin'
         }
       }
-    }
-
-    methods = {
-        setSorting: jest.fn()
     }
 
     actions = {
@@ -60,18 +59,16 @@ let methods
           feed: {
             sort: 'new'
           }
-        }
+        },
+        dispatch: jest.fn()
       }
     }
 
-    wrapper = shallowMount(MobileFeedSorting, {
+    theMountedComponent = shallowMount(MobileFeedSorting, {
       mocks,
       store,
       stubs,
       getters,
-      methods: {
-        setSorting: jest.fn()
-    },
       computed
     })
   })
@@ -99,11 +96,11 @@ let methods
     }
   ]
   it('deve o componente deve renderizar', () => {
-    expect(wrapper).toBeTruthy()
+    expect(theMountedComponent).toBeTruthy()
   })
 
   it('exibe a lista de IfyDropdownItem com os possíveis sorts', () => {
-    const links = wrapper.findAll('[jest-IfyDropdownItem]')
+    const links = theMountedComponent.findAll('[jest-IfyDropdownItem]')
     expect(links.exists()).toBeTruthy()
 
     for (let i = 0; i < links.length; i++) {
@@ -122,25 +119,23 @@ let methods
   })
 
   it.only('Ao clicar num dos sortingintems dispara setSorting', async () => {
-    const links = wrapper.findAll('[jest-IfyDropdownItem]')
-    expect(links.exists()).toBeTruthy()
+    // o método será chamado no click num dos elementos do find abaixo
+    const wrapperArray = theMountedComponent.findAll('[jest-IfyDropdownItem]')
+    expect(wrapperArray.exists()).toBeTruthy()
 
-    for await (const item of sortingParams) {
-    //   const link = links.at(i)
-    //   const icon = link.find('[icon]')
-    //   const spann = link.find('span:last-child')
-    //   const spanText = spann.text()
-    //   const iconeAttr = icon.attributes('icon')
-     await wrapper.find('[jest-IfyDropdownItem]').trigger('click')
-     await wrapper.vm.$nextTick()
-    expect(wrapper.vm.setSorting).toHaveBeenCalledWith(item.type)
-    // ler https://github.com/vuejs/vue-test-utils/issues/1027
-    
-      //   expect(
-    //     sortingParams.find((item) => {
-    //       return item.icon === iconeAttr && item.label === spanText
-    //     })
-    //   ).toBeTruthy()
+    // Chame o jest.spyOn, passe o wrapper.vm e o nome do método a ser verificado
+    const spy = jest.spyOn(theMountedComponent.vm, 'setSorting')
+
+    for (let i = 0; i < wrapperArray.length; i++) {
+         const wrapperArrayItem = wrapperArray.at(i)
+         
+         // O elemento clicado é um COMPONENTE que possui e está @click stubbado
+         // Por isso precisa usar $emit ao invés de trigger. Trigger só funciona para elementos nativos html 
+         await wrapperArrayItem.vm.$emit('click')
+          
+         expect(spy).toBeCalled()
+         expect(theMountedComponent.vm.setSorting).toBeCalled()
+         console.log(wrapperArrayItem.html())
     }
-  })
+   })
 })

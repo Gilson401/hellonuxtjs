@@ -18,6 +18,7 @@
           @click="setSorting(key)"
         >
           <div>
+            <p>contador {{ contador }}</p>
             <span class="mr-2">
               <Fa :icon="btn.icon" />
             </span>
@@ -39,6 +40,7 @@
 export default {
   data () {
     return {
+      contador: 0,
       isOpen: null,
       sortingOptions: {
         new: {
@@ -72,12 +74,13 @@ export default {
     }
   },
 
-  methods: {
-    setSorting (sortValue) {
-      this.$store.dispatch('feed/setSorting', sortValue)
-      this.isOpen = false
-    }
-  }
+//   methods: {
+//     setSorting (sortValue) {
+//       this.contador += 1
+//       this.$store.dispatch('feed/setSorting', sortValue)
+//       this.isOpen = false
+//     }
+//   }
 }
 </script>
 <style lang="postcss" scoped>
