@@ -49,7 +49,6 @@ const storeMock = Object.freeze({
         description: 'notification.topic.mention'
       }]
     }
-
   },
   mutations: {
     'feed/SHOW_FEED_SORTING': jest.fn(),
@@ -115,7 +114,7 @@ describe('Bgt', () => {
     wrapper = shallowMount(topicDetailPage, mountOptions)
   })
 
-  it.only('O componente deve ser renderizado', () => {
+  it.only('deve renderizar', () => {
     expect(wrapper.exists()).toBeTruthy()
   })
 
