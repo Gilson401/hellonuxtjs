@@ -49,7 +49,7 @@
             </p>
           </div>
           <div>
-            <p class="mx-4 text-sm text-left text-gray-700 md:hidden">
+            <p class="mx-4 text-sm text-left  md:hidden">
               {{ channel.description }}
             </p>
 
@@ -203,7 +203,7 @@ export default {
 }
 
 .tabs-items.active-tab {
-  @apply text-brand-700 border-b-2 border-green-500 ;
+  @apply  border-b-2 border-green-500 ;
 }
 
 </style>

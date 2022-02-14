@@ -18,23 +18,23 @@
           :href="$serviceURL('/console')"
           class="app-button"
         >
-          <img src="~/assets/logo-mini.svg" alt="Console" class="w-full">
+          <!-- <img src="~/assets/logo-mini.svg" alt="Console" class="w-full"> -->
         </a>
         <a
           :href="$serviceURL('/quant/strength-by-derivatives')"
           class="app-button"
         >
-          <img src="~/assets/sonar.svg" alt="Sonar" class="w-full">
+          <!-- <img src="~/assets/sonar.svg" alt="Sonar" class="w-full"> -->
         </a>
         <a :href="$serviceURL('/quant/bgt')" class="app-button">
-          <img src="~/assets/bgt.svg" alt="BGT" class="w-full">
+          <!-- <img src="~/assets/bgt.svg" alt="BGT" class="w-full"> -->
         </a>
         <a :href="$serviceURL('/price-action')" class="app-button">
-          <img
+          <!-- <img
             src="~/assets/priceaction-logo.svg"
             alt="Price Action"
             class="w-full"
-          >
+          > -->
         </a>
       </div>
     </div>
@@ -84,7 +84,7 @@ export default {
 .app-button {
   @apply inline-flex justify-center items-center
     w-16 h-16 m-1 p-1 box-content
-    rounded-xs overflow-hidden
+    overflow-hidden
     hover:bg-gray-200;
 }
 </style>

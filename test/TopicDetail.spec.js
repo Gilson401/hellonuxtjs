@@ -115,6 +115,7 @@ describe('Bgt', () => {
   })
 
   it.only('deve renderizar', () => {
+    console.log(wrapper.html())  
     expect(wrapper.exists()).toBeTruthy()
   })
 

@@ -1,7 +1,7 @@
 <template>
   <div class="py-4 filhoEnglobe">
     <div v-if="!esconder" class="border-2 border-red-300 px-2 mb-3">
-      <p>FILHO</p>
+      <h1>FILHO</h1>
       <hr>
       <p>Valores reativos do pai sendo enxergados no filho</p>
       <p> numberfatherVar: {{ something }} </p>
@@ -73,4 +73,35 @@ export default {
     font-size: 1.5rem;
 }
 
+
+h1 {
+  --b: .08em; /* line thickness */
+  color: #1095c1;
+  
+  --_g: #0000 90deg,currentColor 0;
+  background:
+    conic-gradient(from 180deg at top var(--b) right var(--b),var(--_g)) calc(200% - var(--_s,0%)) 0;
+    /* conic-gradient(from 0deg at bottom var(--b) left var(--b),var(--_g)) calc(var(--_s,0%) - 100%) 100%; */
+  background-size: 200% var(--_s,var(--b));
+  background-repeat: no-repeat;
+  transition: .3s var(--_t,0s), background-position .3s calc(.3s - var(--_t,0s));
+}
+h1:hover {
+  --_s: 100%;
+  --_t: .3s;
+}
+
+
+body {
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  place-content: center;
+}
+h1 {
+  font-family: system-ui, sans-serif;
+  font-size: 5rem;
+  cursor: pointer;
+  padding: 0 .15em;
+}
 </style>
