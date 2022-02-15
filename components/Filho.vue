@@ -73,7 +73,6 @@ export default {
     font-size: 1.5rem;
 }
 
-
 h1 {
   --b: .08em; /* line thickness */
   color: #1095c1;
@@ -90,7 +89,6 @@ h1:hover {
   --_s: 100%;
   --_t: .3s;
 }
-
 
 body {
   height: 100vh;

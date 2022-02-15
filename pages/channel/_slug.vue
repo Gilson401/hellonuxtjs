@@ -20,7 +20,7 @@
       >
         <template v-if="showHeader">
           <div
-            class="h-20 md:h-40 overflow-hidden bg-center bg-no-repeat bg-cover bg-brand md:rounded md:rounded-b-none"
+            class="h-20 md:h-40 overflow-hidden bg-center bg-no-repeat bg-cover md:rounded md:rounded-b-none"
             :style="{ backgroundImage }"
           />
 

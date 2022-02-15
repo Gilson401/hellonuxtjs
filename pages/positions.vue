@@ -1,5 +1,19 @@
 <template>
   <div class="degrade">
+    <div class="flex flex-row w-full  border-2 border-indigo-600 ">
+      <div class="w-1/4">
+        a
+      </div>
+      <div class="w-1/4">
+        b
+      </div>
+      <div class="w-1/4">
+        c
+      </div>
+      <div class="w-1/4 static">
+        <PositionBox />
+      </div>
+    </div>
     <h3 class="class-h3">
       Aplicando conceiros do curso Alura
     </h3>
@@ -77,7 +91,9 @@
   </div>
 </template>
 <script>
+import PositionBox from '~/components/PositionBox.vue'
 export default {
+  components: { PositionBox },
   data () {
     return {
       activeColor: 'black',
