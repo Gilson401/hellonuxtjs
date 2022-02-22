@@ -21,15 +21,14 @@
           @click="showa = !showa"
         />
       </template>
-
-      <template #default>
-        <Button
-          text="Muda B"
-          @click="showb = !showb"
-        />
-      </template>
     
-      <template slot="end">
+      <Button
+        slot="start"
+        text="Muda B"
+        @click="showb = !showb"
+      />
+    
+      <template #end>
         <Button
           text="Muda C"
           @click="showc = !showc"
@@ -58,7 +57,6 @@
       </template>
     </SlotScope>
 
-
     <p> O mesmo exemplo acima mas com outra sintaxe : </p>
     <SlotScope>
       <template slot-scope="info">
@@ -66,11 +64,9 @@
       </template>
     </SlotScope>
 
-
-
-<p> O mesmo exemplo acima só que com outra sintaxe, v-slot:default ao invés de #default: </p>
+    <p> O mesmo exemplo acima só que com outra sintaxe, v-slot:default ao invés de #default: </p>
     <SlotScope>
-      <template v-slot:default="info">
+      <template #default="info">
         {{ info.slotScopedVariables.varB }}
       </template>
     </SlotScope>
@@ -85,24 +81,25 @@
       {{ slotScopedVariables.varB }}
     </SlotScope>
 
-<section>
-            <h2>The below items are dinamic slot generated.</h2>
-            <DinamicSlots>
-                <p slot="slotNameA" class="text-red-700 font-bold">
-                Slot  content from father A
-            </p>
-            
-            <template #slotNameB>
-                <Button
-                text="Button for dinamic slot      B"
-                @click="showc = !showc"
-                />
-            </template>
-            <template #slotNameC>
-                <p> Slot  content  from father C</p>
-            </template>
-            </DinamicSlots>
-</section>
+    <section>
+      <h2>The below items are dinamic slot generated.</h2>
+      <DinamicSlots>
+        <template #slotNameA>
+          <p class="text-red-700 font-bold">
+            Slot  content from father A
+          </p>
+        </template>
+        <template #slotNameB>
+          <Button
+            text="Button for dinamic slot      B"
+            @click="showc = !showc"
+          />
+        </template>
+        <template #slotNameC>
+          <p> Slot  content  from father C</p>
+        </template>
+      </DinamicSlots>
+    </section>
   </div>
 </template>
 

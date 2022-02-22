@@ -205,11 +205,10 @@ export default {
     @apply h-5 w-full;
 }
 .tw-center {@apply flex justify-center items-center;}
+
 .load-div{
-    @apply rounded-full;
-    @apply border-blue-500 border-r-2 border-t-2 border-b-2;
-    @apply animate-spin;
-    @apply h-5 w-5;
+    @apply rounded-full  border-blue-500 border-r-2 border-t-2 border-b-2 animate-spin  h-5 w-5;
 }
+
 .oeste{    display: flex;    justify-content:flex-start;  align-items:center;  }
 </style>

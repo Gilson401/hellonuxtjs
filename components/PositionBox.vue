@@ -3,7 +3,7 @@
     type="primary"
     custom-class="button"
     rounded="full"
-    @click="$router.push('/topic/create')"
+    @click="$router.push('/topic/create'); doOtherThing()"
   >
     <span class="hidden lg:inline-block">
       Novo Tópico

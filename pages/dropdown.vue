@@ -4,19 +4,18 @@
       :props1="data1"
       :active="active"
     >
-      <p slot="trigger">
-        click -me to show modal component with a special message
-      </p>
-
-      <template #default>
-        <div class="w-72 h-96 ">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quidem temporibus doloribus ab amet
-            quod consequuntur debitis nemo eligendi!
-            Assumenda, velit. Id eaque vel consequuntur voluptatem commodi voluptate veniam non?
-          </p>
-        </div>
+      <template #trigger>
+        <p>
+          click -me to show modal component with a special message
+        </p>
       </template>
+      <div class="w-72 h-96 ">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quidem temporibus doloribus ab amet
+          quod consequuntur debitis nemo eligendi!
+          Assumenda, velit. Id eaque vel consequuntur voluptatem commodi voluptate veniam non?
+        </p>
+      </div>
     </Dropdown>
     
     <section class="py-5">
@@ -26,6 +25,20 @@
         text="setComputed"
         @click="setComputed"
       />
+    </section>
+
+    <section>
+      <h1>Conferir positions absolute. O elemento absolute vai se referir ao body ou ao primeiro ascendente não static?</h1>
+
+      <div class="w-9/12 p-8 border-2 border-gray-900">
+        <div class="w-9/12 p-8 border-2 border-gray-900">
+          <div class="w-9/12 p-8 border-2 border-gray-900">
+            <div class="absolute border-2 border-gray-900 top-0 left-0 bg-red-600">
+              Descendente absoluto
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 </template>
