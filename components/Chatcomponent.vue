@@ -106,7 +106,11 @@ import thousandFormatter from '../helpers/numbers/thousandformatter'
 export default {
   filters: {
     thousandFormatter (value) {
-      return thousandFormatter(value)
+      if (value === 1) {
+        return ''
+      } else {
+        return thousandFormatter(value)
+      }
     }
   },
   props: {

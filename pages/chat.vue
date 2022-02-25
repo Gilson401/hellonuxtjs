@@ -19,7 +19,7 @@ export default {
           comment: 'Tupy é para buy hold forever.',
           reactions: [
             { type: '&#128512;', count: 2 },
-            { type: '&#10084;&#65039;', count: 4 },
+            { type: '&#10084;&#65039;', count: 1 },
             { type: '&#128169;', count: 2000 }],
           userName: 'Emmanuel',
           time: '15:15',
@@ -42,7 +42,22 @@ export default {
           userName: 'Maria',
           time: '15:15',
           isMy: false
+        },
+        {
+          comment: 'no Reactions',
+          reactions: [],
+          userName: 'Ignorado da Silva',
+          time: '15:15',
+          isMy: false
+        },
+        {
+          comment: 'Its time to buy BCT and hold in as long as possible because the time is forever alone in thios spring. Cant belive its so hard',
+          reactions: [{ type: '&#10084;&#65039;', count: 1 }],
+          userName: 'Ignorado da Silva',
+          time: '15:15',
+          isMy: true
         }
+
       ]
     }
   }
