@@ -3,15 +3,16 @@
 /* eslint-disable vue/no-v-html */
 <template>
   <div>
+    <p>SVG LIKE</p>
     <!-- user não autor -->
     <div
       v-if="!isMy"
       class="flex px-2 mb-2 other-message"
     >
       <div
-        class="avatar rounded-full h-16 w-16 bg-gray-800 self-end flex-shrink-0 overflow-hidden mr-2"
+        class="avatar rounded-full h-8 w-8 bg-gray-800 self-end flex-shrink-0 overflow-hidden mr-1"
       >
-        <img src="https://picsum.photos/200/300" alt="avatar">
+        <img src="https://picsum.photos/32/32" alt="avatar">
       </div>
 
       <div
@@ -49,7 +50,7 @@
             {{ time }}
           </p>
         </div>
-        <!-- <div class="tail-ballon" /> -->
+        <div class="tail-left" />
       </div>
     </div>
     <!-- User é o author -->
@@ -60,8 +61,9 @@
         'my-message': isMy,
       }"
     >
+    <!-- bg-white -->
       <div
-        class="ballon bg-white rounded-r-sm rounded-tl-sm pt-1 pb-px pl-1.5 pr-1 relative w-full"
+        class="ballon  rounded-l-sm rounded-tr-sm pt-1 pb-px pl-1.5 pr-1 relative w-full"
       >
         <span
           :class="[nameColor]"
@@ -95,6 +97,7 @@
             {{ time }}
           </p>
         </div>
+        <div class="tail-right" />
       </div>
     </div>
   </div>
@@ -181,35 +184,31 @@ width: calc(100% - 64px);
 }
 
 .my-message .ballon {
+  /* @apply border border-red-200; */
   @apply bg-indigo-100;
 }
 
-.my-message .ballon:after {
-  content: "";
+.tail-right {
   position: absolute;
-  bottom: 0px;
-  right: -30px;
-  /* width: 32px;
-  height: 32px; */
-  @apply w-8 h-16 ;
-  /* background: radial-gradient(circle at top right, transparent 65%, rgb(224, 231, 255) 50%); */
-  background-image: radial-gradient(ellipse  at top right, transparent 80%, rgb(224, 231, 255) 10%);
+  bottom: 0;
+  right: 0;
+  height: 17px;
+  width: 7px;
+  transform: translateX(95%);
+  background-repeat: no-repeat;
+  background-image: url('../assets/img/corner-fill-right.svg')
 }
 
-.other-message .ballon:before {
-  content: "";
+.tail-left {
   position: absolute;
-  z-index: 0;
-  bottom: 0px;
-  left: -30px;
-  /* width: 32px;
-  height: 32px;
-  background: radial-gradient(circle at top left, transparent 65%, white 50%); */
-  @apply w-8 h-16 ;
-
-  /* background-image: radial-gradient(ellipse  at 0 0, transparent 80%, white 20%); ok */
-
-  background-image: radial-gradient(ellipse  at 0 3px, transparent 80%, white 10%);
+  bottom: 0;
+  left: 0;
+  border: none;
+  height: 17px;
+  width: 7px;
+  transform: translateX(-100%);
+  background-repeat: no-repeat;
+  background-image: url('../assets/img/corner-fill-left.svg')
 }
 
 </style>

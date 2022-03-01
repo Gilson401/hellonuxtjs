@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-blue-300 mb-72 py-7">
-    <Chatcomponent
+  <div class="bg-indigo-900 mb-72 py-7">
+    <Chatcomponentsvg
       v-for="(message, index) in messages"
       :key="index"
       :message="message"
